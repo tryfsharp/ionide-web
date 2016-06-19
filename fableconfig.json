@@ -1,0 +1,9 @@
+{
+  "module": "amd",
+  "sourceMaps": true,
+  "projFile": "./src/editor.fsx",
+  "outDir": "public",
+  "scripts": {
+    "prebuild": "npm install"
+  }
+}
