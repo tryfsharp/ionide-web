@@ -10,7 +10,7 @@
     "fsac": ".\\runner\\fsac",
     "prestart": "npm install",
     "start": "concurrently \"npm run server \" \"npm run fsac\" ",
-    "watch": "fable -w"
+    "watch": "concurrently \"npm start\" \"fable -w\""
 
   },
   "author": "Krzysztof Cieslak",
