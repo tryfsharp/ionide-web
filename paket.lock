@@ -1,0 +1,5 @@
+
+GIT
+  remote: https://github.com/ionide/FsAutoComplete.git
+     (90423567453c82104e852a188640cbfad5882aaa)
+      build: build.cmd LocalRelease

@@ -1,16 +1,22 @@
 {
-  "name": "newtryfsharp",
+  "name": "ionide-web",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "preserver": "fable",
     "server": "node_modules/.bin/http-server -c-1 ./ -p 8888",
-    "build": "fable",
+    "prefsac": ".\\.paket\\paket update",
+    "fsac": ".\\runner\\fsac",
+    "prestart": "npm install",
+    "start": "concurrently \"npm run server \" \"npm run fsac\" ",
     "watch": "fable -w"
+
   },
   "author": "Krzysztof Cieslak",
   "license": "MIT",
   "dependencies": {
+    "concurrently": "^2.1.0",
     "core-js": "^2.4.0",
     "fable-core": "^0.1.6",
     "monaco-editor": "0.x.x",
