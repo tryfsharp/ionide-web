@@ -389,6 +389,23 @@ let definitionProvider = {
 
 }
 
+let referenceProvider = {
+    new languages.ReferenceProvider
+    with 
+        member this.provideReferences(model, position, ctx, token) = 
+            promise {
+                let! o = symbolUse {FileName = "test.fsx"; Line = position.lineNumber |> unbox; Column = position.column |> unbox; Filter = ""}
+                return
+                    o.Data.Uses |> Array.map (fun d ->
+                        let res = createEmpty<languages.Location> 
+                        res.range <- Range (float d.StartLine - 1., float d.StartColumn, float d.EndLine - 1., float d.EndColumn) |> unbox
+                        res )
+                    
+                    |> ResizeArray
+            } |> Case2
+
+}
+
 //---------------------------------------------------
 //Create editor
 //---------------------------------------------------
@@ -399,6 +416,7 @@ monaco.languages.Globals.registerSignatureHelpProvider("fsharp", signatureProvid
 monaco.languages.Globals.registerDocumentHighlightProvider("fsharp", highlighterProvider)
 monaco.languages.Globals.registerRenameProvider("fsharp", renameProvider)
 monaco.languages.Globals.registerDefinitionProvider("fsharp", definitionProvider)
+monaco.languages.Globals.registerReferenceProvider("fsharp", referenceProvider)
 
 let ed = monaco.editor.Globals.create(dom |> unbox, options, services )
 let md = ed.getModel()
