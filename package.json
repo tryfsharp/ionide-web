@@ -6,7 +6,7 @@
   "scripts": {
     "preserver": "fable",
     "server": "node_modules/.bin/http-server -c-1 ./ -p 8888",
-    "prefsac": ".\\.paket\\paket update",
+    "prefsac": ".\\.paket\\paket.bootstrapper && .\\.paket\\paket update",
     "fsac": ".\\runner\\fsac",
     "prestart": "npm install",
     "start": "concurrently \"npm run server \" \"npm run fsac\" ",
