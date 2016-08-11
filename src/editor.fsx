@@ -348,7 +348,7 @@ let highlighterProvider = {
                 return
                     o.Data.Uses |> Array.map (fun d ->
                         let res = createEmpty<languages.DocumentHighlight> 
-                        res.range <- Range (float d.StartLine - 1., float d.StartColumn, float d.EndLine - 1., float d.EndColumn) |> unbox
+                        res.range <- Range (float d.StartLine, float d.StartColumn, float d.EndLine, float d.EndColumn) |> unbox
                         res.kind <- (0 |> unbox)
                         res )
                     
