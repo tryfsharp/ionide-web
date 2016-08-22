@@ -4,13 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preserver": "fable",
-    "server": "node_modules/.bin/http-server -c-1 ./ -p 8888",
-    "prefsac": ".\\.paket\\paket.bootstrapper && .\\.paket\\paket update",
-    "fsac": ".\\runner\\fsac",
     "prestart": "npm install",
-    "start": "concurrently \"npm run server \" \"npm run fsac\" ",
-    "watch": "concurrently \"npm start\" \"fable -w\""
+    "start": "fable -w"
   },
   "author": "Krzysztof Cieslak",
   "license": "MIT",
@@ -18,12 +13,12 @@
     "axios": "^0.12.0",
     "concurrently": "^2.1.0",
     "core-js": "^2.4.0",
-    "fable-core": "^0.1.6",
+    "fable-core": "^0.5.4",
     "monaco-editor": "0.x.x",
     "requirejs": "^2.2.0"
   },
   "devDependencies": {
-    "fable-compiler": "^0.3.22",
+    "fable-compiler": "^0.5.6",
     "fable-import-fetch": "0.0.2",
     "http-server": "^0.9.0"
   }

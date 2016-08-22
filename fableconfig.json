@@ -1,6 +1,6 @@
 {
   "module": "amd",
   "sourceMaps": false,
-  "projFile": "./src/editor.fsx",
+  "projFile": "./src/ionide-web.fsproj",
   "outDir": "public"
 }

@@ -2,3 +2,5 @@ node_modules/
 public/
 paket.exe
 paket-files/
+src/obj
+.vs
