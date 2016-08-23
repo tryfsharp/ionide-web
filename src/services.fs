@@ -13,10 +13,15 @@ open Fable.Import.monaco
 
 module Communication = 
     let mutable root = ""
-    let request<'a, 'b> (obj : 'a) endpoint id = 
+
+    let request<'a, 'b> (obj : 'a) (endpoint:string) id = 
+        Log.trace("autocomplete", "Calling %s with id %s", endpoint, id)
         if root = "" then failwith "Root URL for services not set!"
         let ep = sprintf "%s/%s" root endpoint
         Globals.axios().post (ep, obj) 
+        |> Promise.fail (fun e -> 
+              Log.exn("autocomplete", "Calling %s failed: %O", ep, e)
+              failwith "Calling autocomplete service failed" )
         |> Promise.success(fun r -> (r.data |> unbox<string[]>).[id] |> JS.JSON.parse |> unbox<'b>)
  
     let parse s = request<ParseRequest, ParseResult> s "parse" 0

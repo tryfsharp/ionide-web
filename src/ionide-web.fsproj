@@ -74,9 +74,10 @@
   <ItemGroup>
     <Compile Include="import\axios.fs" />
     <Compile Include="import\monaco.fs" />
+    <Compile Include="utils.fs" />
     <Compile Include="dto.fs" />
-    <Compile Include="promise.fs" />
     <Compile Include="services.fs" />
+    <Compile Include="fsi.fs" />
     <Compile Include="editor.fs" />
   </ItemGroup>
   <Choose>
