@@ -46,5 +46,11 @@ let createEditor id (customize:System.Action<editor.IEditorConstructionOptions>)
             let model = ed.getModel()
             let value = model.getValue().TrimEnd()
             model.setValue(if value = "" then code else value + "\n\n" + code)
+            let rng = createEmpty<IRange>
+            rng.startLineNumber <- model.getLineCount()
+            rng.endLineNumber <- model.getLineCount()
+            rng.startColumn <- 0.
+            rng.endColumn <- 0.
+            ed.setSelection(rng)
         member x.setTestCode(code, callback) = 
             fsi.SetTestCode(code, callback) }

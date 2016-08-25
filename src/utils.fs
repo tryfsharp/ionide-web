@@ -104,10 +104,16 @@ module Html =
 
     type DomNode = 
       | Text of string
+      | Html of string
       | Element of tag:string * attributes:(string * DomAttribute)[] * children : DomNode[]
 
     let rec render node = 
       match node with
+      | Html(s) ->
+          let wrapper = document.createElement_div()
+          wrapper.innerHTML <- s
+          wrapper :> Node
+
       | Text(s) -> 
           document.createTextNode(s) :> Node
 
@@ -125,6 +131,7 @@ module Html =
         node.appendChild(render dom) |> ignore
   
     let text s = Text(s)
+    let html s = Html(s)
     let (=>) k v = k, Property(v)
     let (=!>) k f = k, Event(f)
 
